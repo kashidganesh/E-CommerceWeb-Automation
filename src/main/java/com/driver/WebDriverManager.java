@@ -7,6 +7,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class WebDriverManager {
 
+
     public static WebDriver getDriver(String browser) {
         WebDriver driver = null;
 
