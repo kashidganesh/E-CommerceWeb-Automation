@@ -43,8 +43,9 @@ public class AddToCart {
         Assert.assertEquals(searchedProductTittle.getText(),searchTerm);
         WebElement addToCart = driver.findElement(By.xpath("//button[@type='submit' and @name='add']"));
         if (!addToCart.isEnabled()) {
-            System.out.println("This product is sold out");
-            driver.quit();
+            String soldOutMessage = "This product is sold out";
+            System.out.println(soldOutMessage); // Consider using a logger for better output
+            Assert.fail(soldOutMessage); // Instead of driver.quit() so that the failure is logged appropriately in the test report.
             return;
         }
         addToCart.click();
