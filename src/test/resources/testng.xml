@@ -2,7 +2,7 @@
 <suite name="Sample Suite">
     <test name="Sample Test">
         <classes>
-            <class name="Test1"/>
+            <class name="AddToCart"/>
         </classes>
     </test>
 </suite>
