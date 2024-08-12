@@ -1,4 +1,4 @@
-package org.pages;
+package com.pages;
 
 import com.beust.ah.A;
 import org.openqa.selenium.By;
