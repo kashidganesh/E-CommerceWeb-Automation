@@ -1,3 +1,4 @@
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -18,7 +19,9 @@ public class AddToCart {
 
     @BeforeTest
     public static void initailizeBrowser(){
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver(new ChromeOptions().addArguments("start-maximized"));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Initialize after driver is assigned
         driver.get("https://web-playground.ultralesson.com/");
     }
 
