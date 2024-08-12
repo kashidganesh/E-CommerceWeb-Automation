@@ -37,6 +37,7 @@ public class AddToCart {
         searchBar.sendKeys(searchTerm + Keys.ENTER);
         WebElement searchedProduct = driver.findElement(By.xpath("//a[contains(text(),'"+searchTerm+"')]"));
         searchedProduct.click();
+
         WebElement searchedProductTittle = driver.findElement(By.cssSelector(".product__title"));
         wait.until(ExpectedConditions.visibilityOf(searchedProductTittle));
         Assert.assertEquals(searchedProductTittle.getText(),searchTerm);
@@ -55,6 +56,8 @@ public class AddToCart {
             Assert.assertEquals(new CartPage(driver,wait).cartValue(),cartCount,"Item has not been added to your cart");
         }
     }
+
+
 
     @AfterTest
     public static void closeBrowser(){
