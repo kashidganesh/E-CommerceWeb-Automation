@@ -2,6 +2,8 @@ import com.pages.CartPage;
 import com.pages.HomePage;
 import com.pages.ProductDetails;
 import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 public class testAddingProductToCart {
@@ -16,8 +18,24 @@ public class testAddingProductToCart {
 
     @Test
     public void testAddMultipleProductsToCart() {
-        // Set up pages needed for the test
-        // Add necessary steps to navigate to and add multiple products
-        // Assert that all products are added to the cart with the correct quantities
+        // Navigate to HomePage and perform a search for the first product
+        HomePage homePage = new HomePage(ShoppingCartTest.browser);
+        ProductDetails productDetails1 = homePage.searchAndNavigateToProduct("First Product Name");
+        productDetails1.specifyItemQuantity(2);
+        productDetails1.clickAddToCart();
+
+        // Navigate to HomePage and perform a search for the second product
+        homePage.performSearch("Second Product Name");
+        ProductDetails productDetails2 = homePage.searchAndNavigateToProduct("Second Product Name");
+        productDetails2.specifyItemQuantity(1);
+        productDetails2.clickAddToCart();
+
+        // Validate items in the cart
+        WebDriverWait ShoppingCartTest = null;
+        CartPage cartPage = new CartPage((WebDriver) ShoppingCartTest, ShoppingCartTest );
+        cartPage.verifyCartItem("First Product Name", 2);
+        cartPage.verifyCartItem("Second Product Name", 1);
+
+        // Verify total price logic here
     }
 }
