@@ -97,6 +97,10 @@ public class CartPage {
         // ... Implement total price validation as needed
     }
 
+    public void navigateToCartPage() {
+        driver.get(CART_PAGE_URL);
+    }
+
     public void removeItemFromCart(String itemName) {
         List<WebElement> removeButtons = driver.findElements(By.tagName("cart-remove-button"));
         List<WebElement> items = driver.findElements(By.xpath("//td[@class='cart-item__details']/a"));
