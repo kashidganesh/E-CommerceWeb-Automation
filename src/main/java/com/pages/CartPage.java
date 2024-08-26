@@ -60,6 +60,22 @@ public class CartPage {
         Assert.assertTrue(emptyCartMessage.isDisplayed(), "Cart is not empty after removing items.");
     }
 
+    public void verifyCartItem(String itemName, int expectedQuantity) {
+        List<WebElement> itemNames = driver.findElements(By.xpath("//td[@class='cart-item__details']/a"));
+        List<WebElement> quantities = driver.findElements(By.cssSelector(".quantity__input"));
+
+        boolean found = false;
+        for (int i = 0; i < itemNames.size(); i++) {
+            if (itemNames.get(i).getText().equalsIgnoreCase(itemName) &&
+                    Integer.parseInt(quantities.get(i).getAttribute("value")) == expectedQuantity) {
+                found = true;
+                break;
+            }
+        }
+
+        Assert.assertTrue(found, "Item name with the expected quantity not found in the cart.");
+    }
+
     public void removeItemFromCart(String itemName) {
         List<WebElement> removeButtons = driver.findElements(By.tagName("cart-remove-button"));
         List<WebElement> items = driver.findElements(By.xpath("//td[@class='cart-item__details']/a"));
