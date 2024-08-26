@@ -13,11 +13,11 @@ public class CartPage {
 
     private WebDriver driver;
     private WebDriverWait wait;
-
+    private static final String CART_PAGE_URL = "https://web-playground.ultralesson.com/cart";
     public CartPage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
         this.wait = wait;
-        driver.navigate().to("https://web-playground.ultralesson.com/cart");
+        driver.get(CART_PAGE_URL);
     }
     public int cartValue() {
         WebElement cartMessage = driver.findElement(By.xpath("//h1[contains(text(),'Your cart is empty')]"));
