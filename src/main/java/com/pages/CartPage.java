@@ -75,6 +75,27 @@ public class CartPage {
 
         Assert.assertTrue(found, "Item name with the expected quantity not found in the cart.");
     }
+    public void verifyCartItemDetails(String itemName, String itemSize, int expectedQuantity, double expectedPrice) {
+        // Example: Fetch and verify item size along with name and quantity
+        WebElement itemSizeElement = driver.findElement(By.xpath("//td[contains(@class,'cart-item__size')]"));
+        String actualSize = itemSizeElement.getText().trim();
+
+        // Existing validations
+        verifyCartItem(itemName, expectedQuantity);
+
+        // Additional validation for item size
+        Assert.assertEquals(actualSize, itemSize, "Item size in the cart does not match the expected.");
+    }
+
+    public void verifyCartItemPrice(String itemName, double expectedUnitPrice, int quantity) {
+        WebElement priceElement = driver.findElement(By.xpath("//td[@class='cart-item__details']/a[text()='" + itemName + "']/following::td[@class='price']/span"));
+        double actualUnitPrice = Double.parseDouble(priceElement.getText().replace("$", "").trim());
+        Assert.assertEquals(actualUnitPrice, expectedUnitPrice, "Unit price for the item in the cart does not match the expected.");
+
+        // Calculate expected total price based on the provided quantity
+        double expectedTotal = expectedUnitPrice * quantity;
+        // ... Implement total price validation as needed
+    }
 
     public void removeItemFromCart(String itemName) {
         List<WebElement> removeButtons = driver.findElements(By.tagName("cart-remove-button"));
