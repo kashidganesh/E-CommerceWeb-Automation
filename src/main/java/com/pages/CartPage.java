@@ -20,6 +20,10 @@ public class CartPage {
         driver.get(CART_PAGE_URL);
         navigateToCartPage();
     }
+
+    public CartPage(String s, String s1) {
+    }
+
     public int cartValue() {
         WebElement cartMessage = driver.findElement(By.xpath("//h1[contains(text(),'Your cart is empty')]"));
         if (cartMessage.isDisplayed()) {

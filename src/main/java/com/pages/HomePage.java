@@ -47,4 +47,9 @@ public class HomePage {
             }
         }
     }
+
+    public ProductDetails searchAndNavigateToProduct(String s) {
+
+        return null;
+    }
 }

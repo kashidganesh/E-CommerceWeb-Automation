@@ -14,7 +14,7 @@ import org.testng.annotations.*;
 import java.time.Duration;
 
 public class ShoppingCartTest {
-    private static WebDriver browser;
+    static WebDriver browser;
     private static WebDriverWait browserWait;
 
     @BeforeTest
