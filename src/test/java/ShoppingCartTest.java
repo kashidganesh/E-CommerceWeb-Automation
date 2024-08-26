@@ -29,7 +29,8 @@ public class ShoppingCartTest {
 
     @Test
     public void testAddingProductToCart() {
-
+        CartPage cartPage = new CartPage(browser, browserWait);
+        int initialCartValue = cartPage.cartValue();
         String itemToSearch = "88 BSLT Skis";
         int expectedCartCount = 0;
 
