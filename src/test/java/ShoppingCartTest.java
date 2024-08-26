@@ -71,4 +71,10 @@ public class ShoppingCartTest {
         browser.quit();
     }
 
+    @BeforeMethod
+    public void ensureEmptyCart() {
+        CartPage cartPage = new CartPage(browser, browserWait);
+        cartPage.clearCart(); // Ensure the cart is initially empty
+    }
+
 }
