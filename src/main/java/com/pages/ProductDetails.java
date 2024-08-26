@@ -6,42 +6,36 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
-
 public class ProductDetails {
-    private WebDriver driver;
-    private WebDriverWait wait;
 
+    private WebDriver webDriver;
+    private WebDriverWait webDriverWait;
 
-    private By productNameLocator = By.cssSelector(".product_title");
-    private By productPriceLocator = By.cssSelector(".product_price");
-    private By addToCartButtonLocator = By.id("add_to_cart");
-    private By quantityFieldLocator = By.id("quantity_wanted");
+    private By itemTitleLocator = By.cssSelector(".product_title");
+    private By itemPriceLocator = By.cssSelector(".product_price");
+    private By addButtonLocator = By.id("add_to_cart");
+    private By quantityInputLocator = By.id("quantity_wanted");
 
-
-    public ProductDetails(WebDriver driver) {
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    public ProductDetails(WebDriver webDriver) {
+        this.webDriver = webDriver;
+        this.webDriverWait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
     }
 
-
-    public String getProductName() {
-        return driver.findElement(productNameLocator).getText();
+    public String retrieveItemName() {
+        return webDriver.findElement(itemTitleLocator).getText();
     }
 
-
-    public String getProductPrice() {
-        return driver.findElement(productPriceLocator).getText();
+    public String retrieveItemPrice() {
+        return webDriver.findElement(itemPriceLocator).getText();
     }
 
-
-    public void setProductQuantity(int quantity) {
-        WebElement quantityField = driver.findElement(quantityFieldLocator);
-        quantityField.clear();
-        quantityField.sendKeys(String.valueOf(quantity));
+    public void specifyItemQuantity(int quantity) {
+        WebElement quantityInput = webDriver.findElement(quantityInputLocator);
+        quantityInput.clear();
+        quantityInput.sendKeys(String.valueOf(quantity));
     }
 
-
-    public void addToCart() {
-        driver.findElement(addToCartButtonLocator).click();
+    public void clickAddToCart() {
+        webDriver.findElement(addButtonLocator).click();
     }
 }
