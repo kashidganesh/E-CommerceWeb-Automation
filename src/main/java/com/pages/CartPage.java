@@ -18,6 +18,7 @@ public class CartPage {
         this.driver = driver;
         this.wait = wait;
         driver.get(CART_PAGE_URL);
+        navigateToCartPage();
     }
     public int cartValue() {
         WebElement cartMessage = driver.findElement(By.xpath("//h1[contains(text(),'Your cart is empty')]"));
@@ -92,9 +93,10 @@ public class CartPage {
         double actualUnitPrice = Double.parseDouble(priceElement.getText().replace("$", "").trim());
         Assert.assertEquals(actualUnitPrice, expectedUnitPrice, "Unit price for the item in the cart does not match the expected.");
 
-        // Calculate expected total price based on the provided quantity
         double expectedTotal = expectedUnitPrice * quantity;
-        // ... Implement total price validation as needed
+        WebElement totalPriceElement = driver.findElement(By.xpath("...")); // Add the correct XPath for the total price
+        double actualTotal = Double.parseDouble(totalPriceElement.getText().replace("$", "").trim());
+        Assert.assertEquals(actualTotal, expectedTotal, "The total price for the item in the cart does not match the expected.");
     }
 
     public void navigateToCartPage() {
