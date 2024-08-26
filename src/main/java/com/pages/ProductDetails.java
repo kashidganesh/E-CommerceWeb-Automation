@@ -38,4 +38,8 @@ public class ProductDetails {
     public void clickAddToCart() {
         webDriver.findElement(addButtonLocator).click();
     }
+
+    public void searchForProduct(String productName) {
+
+    }
 }
